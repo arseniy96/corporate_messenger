@@ -1,7 +1,11 @@
 class ChatsController < ApplicationController
 
   def index
-    @chats = Chat.all
+    if user_signed_in?
+      @user = current_user
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -14,10 +18,10 @@ class ChatsController < ApplicationController
   end
 
   def edit
-    if @chat.user_creator_id == current_user.id
-      @chat = Chat.find(params[:id])
+    @chat = Chat.find(params[:id])
+    if !(user_signed_in?) && @chat.user_creator_id != current_user.id
+      redirect_to chat_path
     end
-
   end
 
   def create
@@ -42,7 +46,7 @@ class ChatsController < ApplicationController
 
   def destroy
     @chat = Chat.find(params[:id])
-    if @chat.user_creator_id == current_user.id
+    if user_signed_in? && @chat.user_creator_id == current_user.id
       @chat.destroy
     end
     redirect_to chats_path
