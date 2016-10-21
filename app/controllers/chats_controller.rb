@@ -6,8 +6,7 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
-    @user_id = UserChat.where(chat_id: @chat.id).first.user_id
-    @user = User.find(@user_id)
+    @user = User.find(@chat.user_creator_id)
   end
 
   def new
@@ -15,11 +14,15 @@ class ChatsController < ApplicationController
   end
 
   def edit
-    @chat = Chat.find(params[:id])
+    if @chat.user_creator_id == current_user.id
+      @chat = Chat.find(params[:id])
+    end
+
   end
 
   def create
     @chat = Chat.new(chat_params)
+    @chat.user_creator_id = current_user.id
     if @chat.save
       @chat.users << current_user
       redirect_to @chat
@@ -39,8 +42,9 @@ class ChatsController < ApplicationController
 
   def destroy
     @chat = Chat.find(params[:id])
-    @chat.destroy
-
+    if @chat.user_creator_id == current_user.id
+      @chat.destroy
+    end
     redirect_to chats_path
   end
 
