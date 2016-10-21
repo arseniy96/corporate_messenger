@@ -1,0 +1,5 @@
+<% @user.chats.each do |chat| %>
+    <h3><%= chat.title %></h3>
+    <p><%= chat.description %></p>
+    <p><%= link_to 'Show', chat_path(chat) %></p><hr/>
+<% end %>
