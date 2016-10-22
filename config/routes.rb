@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :chats do
-    resources :messanges, only: [:create]
+    resources :messages, only: [:create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

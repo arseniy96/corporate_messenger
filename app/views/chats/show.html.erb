@@ -7,3 +7,20 @@
       <%= link_to 'Edit', edit_chat_path(@chat) %>
     </p>
 <% end %>
+
+<h2>Messages:</h2>
+<% @chat.messages.each do |message| %>
+    <p><%= message.text %></p>
+    <p><%= User.find(message.user_id).email %></p>
+<% end %>
+
+<h2>New message:</h2>
+<%= form_for [@chat, @chat.messages.build] do |f| %>
+    <p>
+      <%= f.label :text %><br/>
+      <%= f.text_area :text %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
