@@ -11,6 +11,7 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @user = User.find(@chat.user_creator_id)
+    render_403 unless @chat.users.include?(current_user)
   end
 
   def new
