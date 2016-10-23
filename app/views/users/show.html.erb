@@ -1,12 +1,12 @@
 <h2><%= @user.email %></h2>
-<p><%= link_to 'Add friend', add_friend_user_path(@user) if current_user.id != @user.id %></p>
+<p><%= link_to 'Add friend', add_friend_user_path(@user) if (current_user.id != @user.id) && !(current_user.users.include?(@user)) %></p>
 <% if current_user.id == @user.id %>
     <h3>Your potential friends:</h3>
     <% @potential_friends.each do |friend| %>
         <%= friend.email %>
     <% end %>
-<% end %>
-<h3>Your friends:</h3>
-<% @friends.each do |friend| %>
-    <p><%= friend.email %></p><hr/>
+    <h3>Your friends:</h3>
+    <% @friends.each do |friend| %>
+        <p><%= friend.email %></p><hr/>
+    <% end %>
 <% end %>
