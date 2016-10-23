@@ -1,0 +1,6 @@
+<h2><%= @user.email %></h2>
+<p><%= link_to 'Add friend', add_friend_user_path(@user) if current_user.id != @user.id %></p>
+<h3>Your friends:</h3>
+<% @friends.each do |friend| %>
+    <p><%= friend.email %></p><hr/>
+<% end %>

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
-  resources :users
+  resources :users do
+    get :add_friend, on: :member
+  end
   resources :chats do
     resources :messages, only: [:create]
   end
