@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   has_many :user_chats
   has_many :chats, through: :user_chats
   has_many :messanges
+  has_many :friends
+  has_many :users, source: :friend, through: :friends
 end
