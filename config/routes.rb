@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :chats do
     resources :messages, only: [:create]
+    get :invite_friends, on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

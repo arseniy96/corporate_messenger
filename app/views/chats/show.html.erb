@@ -8,6 +8,11 @@
     </p>
 <% end %>
 
+<h2>Invite Your Friends:</h2>
+<% @friends.each do |friend| %>
+    <%= link_to friend.email, controller: 'chats', action: 'invite_friends', id: @chat, user_id: friend %>
+<% end %>
+
 <h2>Messages:</h2>
 <% @chat.messages.each do |message| %>
     <p><%= message.text %></p>

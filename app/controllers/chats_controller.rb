@@ -11,6 +11,7 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @user = User.find(@chat.user_creator_id)
+    @friends = current_user.users
     render_403 unless @chat.users.include?(current_user)
   end
 
@@ -51,6 +52,13 @@ class ChatsController < ApplicationController
       @chat.destroy
     end
     redirect_to chats_path
+  end
+
+  def invite_friends
+    @chat = Chat.find(params[:id])
+    @friend = User.find(params[:user_id])
+    @chat.users << @friend
+    redirect_to @chat
   end
 
   private
