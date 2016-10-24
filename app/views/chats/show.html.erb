@@ -23,9 +23,9 @@
 <%= form_for [@chat, @chat.messages.build] do |f| %>
     <p>
       <%= f.label :text %><br/>
-      <%= f.text_area :text %>
+      <%= f.text_area :text, class: "form-control", style: "width: 30%; height: 80px" %>
     </p>
     <p>
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-info" %>
     </p>
 <% end %>
