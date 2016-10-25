@@ -10,6 +10,7 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
+    render_404 unless @chat
     @user = User.find(@chat.user_creator_id)
     @friends = current_user.users
     render_403 unless @chat.users.include?(current_user)
@@ -21,6 +22,7 @@ class ChatsController < ApplicationController
 
   def edit
     @chat = Chat.find(params[:id])
+    render_404 unless @chat
     if user_signed_in? && @chat.user_creator_id != current_user.id
       redirect_to chat_path
     end
