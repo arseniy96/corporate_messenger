@@ -21,7 +21,7 @@ class ChatsController < ApplicationController
 
   def edit
     @chat = Chat.find(params[:id])
-    if !(user_signed_in?) && @chat.user_creator_id != current_user.id
+    if user_signed_in? && @chat.user_creator_id != current_user.id
       redirect_to chat_path
     end
   end
