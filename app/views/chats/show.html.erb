@@ -8,10 +8,13 @@
     </p>
 <% end %>
 
-<h2>Invite Your Friends:</h2>
-<% @friends.each do |friend| %>
-    <%= link_to friend.email, controller: 'chats', action: 'invite_friends', id: @chat, user_id: friend unless (friend.chats.include?(@chat)) %>
-<% end %>
+<button class="invite-friends btn btn-success">Invite Your Friends:</button>
+<ul class="invite-friends">
+    <% @friends.each do |friend| %>
+        <li><%= link_to friend.email, controller: 'chats', action: 'invite_friends',
+                        id: @chat, user_id: friend unless (friend.chats.include?(@chat)) %></li>
+    <% end %>
+</ul>
 
 <h2>Messages:</h2>
 <% @chat.messages.each do |message| %>
@@ -29,3 +32,10 @@
       <%= f.submit class: "btn btn-info" %>
     </p>
 <% end %>
+
+<script type="text/javascript">
+    $('ul.invite-friends').hide();
+    $('button.invite-friends').click(function(){
+        $('ul.invite-friends').slideToggle();
+    });
+</script>
