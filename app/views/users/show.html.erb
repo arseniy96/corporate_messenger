@@ -4,7 +4,7 @@
   <div class="col-md-4">
   <h3>Your potential friends:</h3>
   <% @potential_friends.each do |friend| %>
-    <%= link_to friend.email, user_path(friend) %>
+    <%= link_to friend.email, user_path(friend) unless @user.users.include?(friend)%>
   <% end %>
   <h3>Your friends:</h3>
   <% @friends.each do |friend| %>
