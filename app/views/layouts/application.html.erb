@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav">
           <li><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'My Chats', chats_path %></li>
-          <li><%= link_to 'My Profile', user_path(current_user) %></li>
+          <li><%= link_to 'My Profile', user_path(current_user) if user_signed_in? %></li>
         </ul>
       </nav>
     </div>
