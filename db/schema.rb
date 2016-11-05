@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023165806) do
+ActiveRecord::Schema.define(version: 20161105192029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chats", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
+    t.integer  "room_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "user_creator_id"
@@ -42,15 +41,23 @@ ActiveRecord::Schema.define(version: 20161023165806) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_chats", force: :cascade do |t|
+  create_table "rooms", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "creator_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "chat_id"
+    t.integer  "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_chats", ["chat_id"], name: "index_user_chats_on_chat_id", using: :btree
-  add_index "user_chats", ["user_id"], name: "index_user_chats_on_user_id", using: :btree
+  add_index "user_rooms", ["room_id"], name: "index_user_rooms_on_room_id", using: :btree
+  add_index "user_rooms", ["user_id"], name: "index_user_rooms_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
