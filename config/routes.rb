@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
+  resources :rooms
+
   resources :users do
     get :add_friend, on: :member
   end

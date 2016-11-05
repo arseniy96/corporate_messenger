@@ -1,0 +1,5 @@
+<% @user.rooms.each do |room| %>
+    <h3><%= room.title %></h3>
+    <p><%= room.description %></p>
+    <p><%= link_to 'Show', room_path(room) %></p><hr/>
+<% end %>
