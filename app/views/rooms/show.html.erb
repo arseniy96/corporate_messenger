@@ -3,8 +3,8 @@
 <p>User: <%= @user.email %></p>
 <% if user_signed_in? && @room.creator_id == current_user.id %>
     <p>
-      <%= link_to 'Delete', chat_path(@room), method: :delete, data: {confirm: 'Are You Sure?'} %>
-      <%= link_to 'Edit', edit_chat_path(@room) %>
+      <%= link_to 'Delete', room_path(@room), method: :delete, data: {confirm: 'Are You Sure?'} %>
+      <%= link_to 'Edit', edit_room_path(@room) %>
     </p>
 <% end %>
 
@@ -15,6 +15,8 @@
                         id: @room, user_id: friend unless (friend.rooms.include?(@room)) %></li>
     <% end %>
 </ul>
+
+<h3><a href="http://paste2.org/mYcZeIAF">Ссылка на вставку сообщений</a></h3>
 
 <script type="text/javascript">
     $('ul.invite-friends').hide();
