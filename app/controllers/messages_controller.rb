@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
 
   def create
-    @chat = Chat.find(params[:chat_id])
+    @room = Room.find(params[:id])
+    @chat = @room.chat
     @message = @chat.messages.new(message_params)
     @message.user_id = current_user.id
     if @message.save
-      redirect_to @chat
+      redirect_to chats_path
     else
       render @chat
     end

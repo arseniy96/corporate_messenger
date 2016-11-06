@@ -3,14 +3,20 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
-  resources :rooms
+  resources :rooms do
+    member do
+      get :invite_friends
+      resource :chats, only: [:show] do
+        resources :messages, only: [:create]
+      end
+    end
+  end
 
   resources :users do
     get :add_friend, on: :member
   end
   resources :chats do
     resources :messages, only: [:create]
-    get :invite_friends, on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
