@@ -1,0 +1,18 @@
+<h1>Hello world!</h1>
+
+<h2>Messages:</h2>
+<% @chat.messages.each do |message| %>
+    <p><%= message.text %></p>
+    <p><%= User.find(message.user_id).email %></p>
+<% end %>
+
+<h2>New message:</h2>
+<%= form_for @chat.messages.new, url: chats_messages_path do |f| %>
+    <p>
+      <%= f.label :text %><br/>
+      <%= f.text_area :text, class: "form-control", style: "width: 30%; height: 80px" %>
+    </p>
+    <p>
+      <%= f.submit class: "btn btn-info" %>
+    </p>
+<% end %>
