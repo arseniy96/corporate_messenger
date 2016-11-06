@@ -1,13 +1,13 @@
 class RoomsController < ApplicationController
 
+  before_action :set_user, only: [:index, :show]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :invite_friends]
+
   def index
-    if user_signed_in?
-      @user = current_user
-    end
+
   end
 
   def show
-    @room = Room.find(params[:id])
     render_404 unless @room
     @user = User.find(@room.creator_id)
     @friends = current_user.users
@@ -19,7 +19,6 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    @room = Room.find(params[:id])
     render_404 unless @room
     if user_signed_in? && @room.creator_id != current_user.id
       redirect_to chat_path
@@ -31,6 +30,8 @@ class RoomsController < ApplicationController
     @room.creator_id = current_user.id
     if @room.save
       @room.users << current_user
+      @chat = Chat.create
+      @room.chat = @chat
       redirect_to @room
     else
       render action: 'new'
@@ -38,7 +39,6 @@ class RoomsController < ApplicationController
   end
 
   def update
-    @room = Room.find(params[:id])
     if @room.update(room_params)
       redirect_to @room
     else
@@ -47,20 +47,28 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    @room = Room.find(params[:id])
     @room.destroy
 
     redirect_to rooms_path
   end
 
   def invite_friends
-    @room = Room.find(params[:id])
     @friend = User.find(params[:user_id])
     @room.users << @friend
     redirect_to @room
   end
 
   private
+
+  def set_user
+    if user_signed_in?
+      @user = current_user
+    end
+  end
+
+  def set_room
+    @room = Room.find(params[:id])
+  end
 
   def room_params
     params.require(:room).permit(:title, :description)
