@@ -1,10 +1,6 @@
-<div class="col-md-3">
-  <%= render 'rooms/header' %>
-</div>
-
 <div class="col-md-6">
   <div class="top-header"><%= @room.title %></div>
-  <div class="chat-body">
+  <div class="content">
     <h2>Messages:</h2>
       <% @chat.messages.each do |message| %>
         <div class="message-body">
