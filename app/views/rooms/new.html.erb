@@ -1,5 +1,12 @@
-<h2>New room</h2>
+<div class="col-md-3">
+  <%= render 'rooms/header' %>
+</div>
 
-<%= form_for @room do |f| %>
-    <%= render partial: 'form', locals: {f: f} %>
-<% end %>
+<div class="col-md-6">
+  <div class="top-header">New Room</div>
+  <div class="room-form">
+    <%= form_for @room do |f| %>
+      <%= render partial: 'form', locals: {f: f} %>
+    <% end %>
+  </div>
+</div>

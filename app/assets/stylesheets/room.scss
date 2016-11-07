@@ -45,11 +45,17 @@
 }
 
 .top-header {
-  font-size: 25px;
+  font-size: 28px;
   color: #df0012;
   position: fixed;
   min-width: 100%;
   background-color: rgba(250, 105, 0, 0.80);
   height: 40px;
   padding-left: 70px;
+}
+
+.room-form {
+  padding-top: 60px;
+  padding-left: 70px;
+  padding-right: 30px;
 }
