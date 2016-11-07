@@ -1,26 +1,29 @@
-<h2><%= @room.title %></h2>
-<p><%= @room.description %></p>
-<p>User: <%= @user.email %></p>
-<% if user_signed_in? && @room.creator_id == current_user.id %>
-    <p>
-      <%= link_to 'Delete', room_path(@room), method: :delete, data: {confirm: 'Are You Sure?'} %>
-      <%= link_to 'Edit', edit_room_path(@room) %>
-    </p>
-<% end %>
+<div class="col-md-6">
+  <div class="top-header">Room</div>
+  <div class="content">
+    <h2><%= @room.title %></h2>
+    <p><%= @room.description %></p>
+    <b><p>User: <%= @user.email %></p></b>
+    <% if user_signed_in? && @room.creator_id == current_user.id %>
+      <p>
+        <%= link_to 'Delete', room_path(@room), method: :delete, data: {confirm: 'Are You Sure?'} %>
+        <%= link_to 'Edit', edit_room_path(@room) %>
+      </p>
+    <% end %>
 
-<button class="invite-friends btn btn-success">Invite Your Friends:</button>
-<ul class="invite-friends">
-    <% @friends.each do |friend| %>
+    <button class="invite-friends btn btn-warning">Invite Your Friends:</button>
+    <ul class="invite-friends">
+      <% @friends.each do |friend| %>
         <li><%= link_to friend.email, controller: 'rooms', action: 'invite_friends',
                         id: @room, user_id: friend unless (friend.rooms.include?(@room)) %></li>
-    <% end %>
-</ul>
-
-<h3><a href="http://paste2.org/mYcZeIAF">Ссылка на вставку сообщений</a></h3>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <script type="text/javascript">
-    $('ul.invite-friends').hide();
-    $('button.invite-friends').click(function(){
-        $('ul.invite-friends').slideToggle();
-    });
+  $('ul.invite-friends').hide();
+  $('button.invite-friends').click(function(){
+    $('ul.invite-friends').slideToggle();
+  });
 </script>

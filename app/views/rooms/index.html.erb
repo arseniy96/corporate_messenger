@@ -1,5 +1,10 @@
-<% @user.rooms.each do |room| %>
-    <h3><%= room.title %></h3>
-    <p><%= room.description %></p>
-    <p><%= link_to 'Show', room_path(room) %></p><hr/>
-<% end %>
+<div class="col-md-6">
+  <div class="top-header">All Rooms</div>
+  <div class="content">
+    <% @user.rooms.each do |room| %>
+      <h3><%= room.title %></h3>
+      <p><%= room.description %></p>
+      <p><%= link_to 'Show', room_path(room) %></p><hr/>
+    <% end %>
+    </div>
+</div>
