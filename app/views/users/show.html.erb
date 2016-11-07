@@ -12,9 +12,9 @@
   <% end %>
   </div>
   <div class="col-md-4">
-    <h3>Your chats:</h3>
-    <% @user.chats.each do |chat| %>
-      <p><%= link_to chat.title, chat_path(chat) %></p>
+    <h3>Your rooms:</h3>
+    <% @user.rooms.each do |room| %>
+      <p><%= link_to room.title, room_path(room) %></p>
     <% end %>
   </div>
 <% elsif !(current_user.users.include?(@user)) %>
