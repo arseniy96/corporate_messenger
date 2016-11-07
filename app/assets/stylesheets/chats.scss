@@ -8,7 +8,28 @@
   border-radius: 25px;
   padding: 5px 15px;
   max-width: 80%;
+  display: inline-block;
+  margin-bottom: 10px;
   .attr {
     font-size: 16px;
   }
+}
+
+.current-user {
+  text-align: right;
+}
+
+.messages {
+  margin-bottom: 30%;
+}
+
+.message-form {
+  background-color: white;
+  position: fixed;
+  border-top: 1px #954829 solid;
+  min-width: 44%;
+  min-height: 10%;
+  bottom: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }

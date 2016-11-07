@@ -27,11 +27,11 @@
   position: relative;
   border-right: 1px #c9722a solid;
   a {
-    color: rgb(205, 232, 255);
+    color: #fff;
   }
 
   a:hover {
-    color: #b7c1d1;
+    color: #cfd9e9;
   }
 }
 
@@ -41,7 +41,7 @@
   padding-top: 20px;
   height: 150px;
   background-color: rgba(250, 105, 0, 0.80);
-  border-bottom: 3px #502817 solid;
+  border-bottom: 3px #954829 solid;
 }
 
 #header2 {
@@ -68,7 +68,7 @@
   color: #df0012;
   position: fixed;
   min-width: 100%;
-  background-color: rgba(250, 105, 0, 0.80);
+  background-color: #fb8834;
   height: 40px;
   padding-left: 70px;
 }
