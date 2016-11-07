@@ -1,24 +1,28 @@
 <div class="col-md-6">
   <div class="top-header"><%= @room.title %></div>
   <div class="content">
-    <h2>Messages:</h2>
+    <div class="messages">
+      <h2>Messages:</h2>
       <% @chat.messages.each do |message| %>
-        <div class="message-body">
-          <p class="attr"><b><%= User.find(message.user_id).email %></b></p>
-          <p><%= message.text %></p>
-        </div><br/>
-       <% end %>
+        <div <%= 'align=right' if current_user.id == message.user_id %>>
+          <div class="message-body <%= "current-user" if current_user.id == message.user_id %>">
+            <p class="attr"><b><%= User.find(message.user_id).email %></b></p>
+            <p><%= message.text %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-    <h2>New message:</h2>
-    <%= form_for @chat.messages.new, url: chats_messages_path do |f| %>
-      <p>
-        <%= f.label :text %><br/>
-        <%= f.text_area :text, class: "form-control", style: "width: 80%; height: 80px" %>
-      </p>
-      <p>
-        <%= f.submit 'Send Message', class: "btn btn-danger" %>
-      </p>
-    <% end %>
+    <div class="message-form">
+      <%= form_for @chat.messages.new, url: chats_messages_path do |f| %>
+        <p>
+          <%= f.text_area :text, class: "form-control", style: "width: 80%; height: 80px" %>
+        </p>
+        <p>
+          <%= f.submit 'Send Message', class: "btn btn-danger" %>
+        </p>
+      <% end %>
+    </div>
   </div>
 </div>
 
