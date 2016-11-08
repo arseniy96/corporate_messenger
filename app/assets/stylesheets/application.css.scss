@@ -72,3 +72,25 @@
   height: 40px;
   padding-left: 70px;
 }
+
+.options {
+  min-width: 100%;
+  min-height: 650px;
+  position: relative;
+  border-right: 1px #c9722a solid;
+  padding-left: 30px;
+  padding-top: 40px;
+  .link-room {
+    padding: 10px;
+    text-align: center;
+    border: 1px rgba(255, 139, 53, 0.50) solid;
+  }
+  a {
+    font-size: 24px;
+    color: #000;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+}

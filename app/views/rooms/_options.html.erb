@@ -1,0 +1,33 @@
+<div class="col-md-3" style="position: fixed;">
+  <div class="row options">
+    <%= link_to chats_path(anchor: 'last') do %>
+      <div class="link-room" id="link1">Chat</div>
+    <% end %>
+    <%= link_to '#' do %>
+      <div class="link-room" id="link2">Files</div>
+    <% end %>
+    <%= link_to '#' do %>
+      <div class="link-room" id="link3">To-Do list</div><br/>
+    <% end %>
+    <button class="invite-friends btn btn-warning">Invite Your Friends:</button>
+    <ul class="invite-friends">
+      <% @friends.each do |friend| %>
+          <li><%= link_to friend.email, controller: 'rooms', action: 'invite_friends',
+                          id: @room, user_id: friend unless (friend.rooms.include?(@room)) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $('ul.invite-friends').hide();
+  $('button.invite-friends').click(function(){
+    $('ul.invite-friends').slideToggle();
+  });
+
+  $('div.link-room').hover(function() {
+    $(this).animate({backgroundColor: '#fb8834'}, 150);
+  }, function() {
+    $(this).animate({backgroundColor: '#fff'}, 150);
+  });
+</script>
