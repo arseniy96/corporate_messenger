@@ -16,6 +16,16 @@
 @import "room";
 @import "chats";
 
+@keyframes blabla {
+  80% {
+    background-color: #ffffff;
+  }
+  100% {
+    background-position: -320px 0;
+    background-color: #fb8834;
+  }
+}
+
 .content {
   padding-top: 60px;
   padding-left: 70px;
@@ -77,20 +87,37 @@
   min-width: 100%;
   min-height: 650px;
   position: relative;
+  .links {
+    .link-room-background {
+      border: 1px rgba(255, 139, 53, 0.50) solid;
+      overflow: hidden;
+    }
+    .link-room {
+      padding: 10px;
+      text-align: left;
+      width: 200%;
+      background: linear-gradient(to right,  #ffffff 0%,#ffffff 50%,#fb8834 50%, #fb8834 100%);
+      background-repeat: no-repeat;
+      background-position: 310px 0;
+      //animation: blabla 500ms;
+      transition: background-position 400ms;
+    }
+    .link-room:hover {
+      background-position: -310px 0;
+      //animation-play-state: running;
+      //background: #fb8834;
+    }
+    a {
+      font-size: 24px;
+      color: #000;
+      transition: color 350ms 50ms;
+    }
+
+    a:hover {
+      color: #fff;
+    }
+  }
   border-right: 1px #c9722a solid;
   padding-left: 30px;
   padding-top: 40px;
-  .link-room {
-    padding: 10px;
-    text-align: center;
-    border: 1px rgba(255, 139, 53, 0.50) solid;
-  }
-  a {
-    font-size: 24px;
-    color: #000;
-  }
-
-  a:hover {
-    color: #fff;
-  }
 }
