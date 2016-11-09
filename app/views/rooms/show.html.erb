@@ -10,20 +10,9 @@
         <%= link_to 'Edit', edit_room_path(@room) %>
       </p>
     <% end %>
-
-    <button class="invite-friends btn btn-warning">Invite Your Friends:</button>
-    <ul class="invite-friends">
-      <% @friends.each do |friend| %>
-        <li><%= link_to friend.email, controller: 'rooms', action: 'invite_friends',
-                        id: @room, user_id: friend unless (friend.rooms.include?(@room)) %></li>
-      <% end %>
-    </ul>
   </div>
 </div>
 
-<script type="text/javascript">
-  $('ul.invite-friends').hide();
-  $('button.invite-friends').click(function(){
-    $('ul.invite-friends').slideToggle();
-  });
-</script>
+<div class="col-md-3">
+  <%= render 'options' %>
+</div>
