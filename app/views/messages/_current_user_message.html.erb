@@ -1,0 +1,6 @@
+<div align=right>
+  <div class="message-body current-user">
+    <p class="attr"><b><%= User.find(message.user_id).email %></b></p>
+    <p id="<%= "last" if message == Message.last %>"><%= message.text %></p>
+  </div>
+</div>

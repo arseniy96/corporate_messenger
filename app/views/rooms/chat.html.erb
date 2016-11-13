@@ -3,18 +3,14 @@
   <div class="content">
     <div class="messages">
       <h2>Messages:</h2>
-      <% @chat.messages.each do |message| %>
-        <div <%= 'align=right' if current_user.id == message.user_id %>>
-          <div class="message-body <%= "current-user" if current_user.id == message.user_id %>">
-            <p class="attr"><b><%= User.find(message.user_id).email %></b></p>
-            <p id="<%= "last" if message == Message.last %>"><%= message.text %></p>
-          </div>
-        </div>
-      <% end %>
+      <div id="messages" data-chat-id="<%= @chat.id %>">
+        <%= render @chat.messages %>
+      </div>
     </div>
 
     <div class="message-form">
-      <%= form_for @chat.messages.new, url: chats_messages_path do |f| %>
+      <%= form_for @message, url: '#' do |f| %>
+        <%= hidden_field_tag 'chat_id', @chat.id %>
         <p>
           <%= f.text_area :text, class: "form-control", style: "width: 80%; height: 80px" %>
         </p>
