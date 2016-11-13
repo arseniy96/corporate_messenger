@@ -1,4 +1,8 @@
 Rails.application.configure do
+
+  config.action_cable.allowed_request_origins = ['https://thawing-spire-15130.herokuapp.com', 'http://thawing-spire-15130.herokuapp.com']
+  config.action_cable.url = "wss://thawing-spire-15130.herokuapp.com/cable"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
