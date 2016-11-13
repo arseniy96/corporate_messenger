@@ -1,4 +1,4 @@
-# PostgreSQL. Versions 8.2 and up are supported.
+# PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -19,11 +19,11 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: corporate_messenger_development
+  database: corporate_messenger_v2_development
   username: corporate_messenger
   password: password
 
@@ -31,7 +31,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: corporate_messenger
+  #username: corporate_messenger_v2
 
   # The password associated with the postgres role (username).
   #password:
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: corporate_messenger_test
+  database: corporate_messenger_v2_test
   username: corporate_messenger
   password: password
 
@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: corporate_messenger_production
-  username: corporate_messenger
-  password: <%= ENV['CORPORATE_MESSENGER_DATABASE_PASSWORD'] %>
+  database: corporate_messenger_v2_production
+  username: corporate_messenger_v2
+  password: <%= ENV['CORPORATE_MESSENGER_V2_DATABASE_PASSWORD'] %>

@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
+    @chat = Chat.new
   end
 
   def edit
@@ -75,3 +76,4 @@ class RoomsController < ApplicationController
   end
 
 end
+
