@@ -1,7 +1,7 @@
 <div class="col-md-3" style="position: fixed;">
   <div class="row options">
     <div class="links">
-      <%= link_to chats_path(anchor: 'last') do %>
+      <%= link_to chats_path(@room) do %>
         <div class="link-room-background">
           <div class="link-room" id="link1">Chat</div>
         </div>
@@ -11,7 +11,7 @@
           <div class="link-room" id="link2">Files</div>
         </div>
       <% end %>
-      <%= link_to '#' do %>
+      <%= link_to room_tasks_path(@room) do %>
         <div class="link-room-background">
           <div class="link-room" id="link3">To-Do list</div>
         </div><br/>

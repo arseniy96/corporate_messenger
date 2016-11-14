@@ -1,6 +1,6 @@
 <div <%= 'align=right' if current_user.id == message.user_id %>>
   <div class="message-body <%= "current-user" if current_user.id == message.user_id %>">
     <p class="attr"><b><%= User.find(message.user_id).email %></b></p>
-    <p id="<%= "last" if message == Message.last %>"><%= message.text %></p>
+    <p><%= message.text %></p>
   </div>
 </div>
