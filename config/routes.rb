@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       resource :chats, only: [:show] do
         resources :messages, only: [:create]
       end
-      resources :tasks
     end
+    resources :tasks
   end
 
   resources :users do
