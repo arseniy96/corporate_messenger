@@ -17,6 +17,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    redirect_to room_tasks_path
+  end
+
   private
 
   def task_params

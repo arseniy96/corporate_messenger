@@ -25,7 +25,10 @@
         <h3><%= User.find(task.creator_id).username %></h3>
         <p><%= task.title %></p>
         <p><%= task.description %></p>
-        <p><b>Выполнить до: <%= task.date %></b></p>
+        <p><b>Выполнить до: <%= date_format(task.date.to_s) %></b></p>
+        <p>
+          <%= link_to 'Delete', room_task_path(@room, task), method: :delete, data: {confirm: 'Are You Sure?'} %>
+        </p>
       <% end %>
     </div>
   </div>
