@@ -5,15 +5,15 @@
       <%= form_for :task, url: room_tasks_path do |f| %>
           <p>
             <%= f.label :title %><br/>
-            <%= f.text_field :title, class: "form-control", style: "width: 70%;" %>
+            <%= f.text_field :title, placeholder: 'Задача',class: "form-control", style: "width: 70%;" %>
           </p>
           <p>
             <%= f.label :description %><br/>
-            <%= f.text_area :description, class: "form-control", style: "width: 70%; height: 80px" %>
+            <%= f.text_area :description, placeholder: 'Описание', class: "form-control", style: "width: 70%; height: 80px" %>
           </p>
           <p>
             <%= f.label :date %><br/>
-            <%= f.datetime_local_field :date, class: "form-control", style: "width: 70%;" %>
+            <%= f.datetime_local_field :date, placeholder: '12:00 2017.01.01', class: "form-control", style: "width: 70%;" %>
           </p>
           <p>
             <%= f.submit class: "btn btn-danger"  %>
@@ -22,13 +22,24 @@
     </div>
     <div class="all-tasks">
       <% @tasks.each do |task| %>
-        <h3><%= User.find(task.creator_id).username %></h3>
-        <p><%= task.title %></p>
-        <p><%= task.description %></p>
-        <p><b>Выполнить до: <%= date_format(task.date.to_s) %></b></p>
-        <p>
-          <%= link_to 'Delete', room_task_path(@room, task), method: :delete, data: {confirm: 'Are You Sure?'} %>
-        </p>
+        <div class="row task-first-line">
+          <div class="col-md-9 task-and-date">
+            <span><%= task.title %></span>
+            <p><b>Выполнить до: <%= date_format(task.date.to_s) %></b></p>
+          </div>
+          <div class="col-md-3 task-buttons" align="right">
+            <span>
+              <%= link_to image_tag('checkmark.png', width: '40px', height: '40px'), '#' %>
+            </span>
+            <span>
+              <%= link_to image_tag('cross.png', width: '40px', height: '40px'), room_task_path(@room, task), method: :delete, data: {confirm: 'Are You Sure?'} %>
+            </span>
+          </div>
+        </div>
+        <div class="row task-second-line">
+          <p><%= task.description %></p>
+          <p><%= User.find(task.creator_id).username %></p>
+        </div>
       <% end %>
     </div>
   </div>
