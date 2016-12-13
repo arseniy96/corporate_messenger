@@ -36,9 +36,11 @@
             </span>
           </div>
         </div>
-        <div class="row task-second-line">
-          <p><%= task.description %></p>
-          <p><%= User.find(task.creator_id).username %></p>
+        <div class="row">
+          <div class="col-md-9 task-second-line">
+            <p><%= task.description %></p>
+            <p><%= User.find(task.creator_id).username %></p>
+          </div>
         </div>
       <% end %>
     </div>
