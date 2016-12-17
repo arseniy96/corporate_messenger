@@ -6,11 +6,16 @@
   min-width: 100%;
 }
 
+.task {
+  margin-bottom: 10px;
+}
+
 .task-first-line {
   background-color: #ffddaa;
   border: 1px #fb8834 solid;
   .task-and-date {
     padding-top: 5px;
+    border-right: 1px #fb8834 solid;
     span {
       font-size: 20px;
     }
@@ -20,7 +25,6 @@
   }
   .task-buttons {
     padding: 12px;
-    border-left: 1px #fb8834 solid;
     span {
       padding-right: 12px;
     }
@@ -28,7 +32,7 @@
 }
 
 .task-second-line {
-  margin-bottom: 10px;
+  background-color: #ffddaa;
   border: 1px #fb8834 solid;
   border-top: 0;
 }
