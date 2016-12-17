@@ -22,24 +22,26 @@
     </div>
     <div class="all-tasks">
       <% @tasks.each do |task| %>
-        <div class="row task-first-line">
-          <div class="col-md-9 task-and-date">
-            <span><%= task.title %></span>
-            <p><b>Выполнить до: <%= date_format(task.date.to_s) %></b></p>
+        <div class="task">
+          <div class="row task-first-line">
+            <div class="col-md-9 task-and-date">
+              <span><%= task.title %></span>
+              <p><b>Выполнить до: <%= date_format(task.date.to_s) %></b></p>
+            </div>
+            <div class="col-md-3 task-buttons" align="right">
+              <span>
+                <%= link_to image_tag('checkmark.png', width: '40px', height: '40px'), '#' %>
+              </span>
+              <span>
+                <%= link_to image_tag('cross.png', width: '40px', height: '40px'), room_task_path(@room, task), method: :delete, data: {confirm: 'Are You Sure?'} %>
+              </span>
+            </div>
           </div>
-          <div class="col-md-3 task-buttons" align="right">
-            <span>
-              <%= link_to image_tag('checkmark.png', width: '40px', height: '40px'), '#' %>
-            </span>
-            <span>
-              <%= link_to image_tag('cross.png', width: '40px', height: '40px'), room_task_path(@room, task), method: :delete, data: {confirm: 'Are You Sure?'} %>
-            </span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-9 task-second-line">
-            <p><%= task.description %></p>
-            <p><%= User.find(task.creator_id).username %></p>
+          <div class="row unfold-description">
+            <div class="col-md-9 task-second-line">
+              <p><%= task.description %></p>
+              <p><%= User.find(task.creator_id).username %></p>
+            </div>
           </div>
         </div>
       <% end %>
@@ -50,3 +52,13 @@
 <div class="col-md-3">
   <%= render 'rooms/options' %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".unfold-description").hide();
+    $(".task-and-date").click(function(){
+      $(this).parent().next().slideToggle("normal");
+      return false;
+    });
+  });
+</script>
