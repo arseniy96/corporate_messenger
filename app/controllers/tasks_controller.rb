@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
   def index
     @room = Room.find(params[:room_id])
+    render_403 unless @room.users.include?(current_user)
     @tasks = @room.tasks
     @friends = current_user.users
   end

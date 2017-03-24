@@ -6,7 +6,8 @@ class ChatsController < ApplicationController
     @chat = @room.chat
     @message = Message.new
     @friends = current_user.users
-    render 'rooms/chat'
+    render 'rooms/chat' if @room.users.include?(current_user)
+    render_403 unless @room.users.include?(current_user)
   end
 
 end
