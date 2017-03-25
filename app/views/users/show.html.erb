@@ -3,6 +3,7 @@
   <div class="content">
     <% if current_user.id == @user.id %>
       <div class="col-md-6">
+        <p><%= image_tag @user.avatar.url(:medium) %></p>
         <h3>Invitations to friends:</h3>
         <% @potential_friends.each do |friend| %>
           <%= link_to friend.email, user_path(friend) unless @user.users.include?(friend)%>

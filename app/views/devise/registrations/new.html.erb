@@ -26,6 +26,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", style: "width: 30%;" %><br/>
   </div>
 
+  <div>
+    <%= f.file_field :avatar %><br/>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-info" %>
   </div>
