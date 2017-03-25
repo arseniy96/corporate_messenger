@@ -94,24 +94,20 @@
       overflow: hidden;
     }
     .link-room {
+      position: relative;
       padding: 10px;
       text-align: left;
-      width: 200%;
-      background: linear-gradient(to right,  #ffffff 0%,#ffffff 50%,#fb8834 50%, #fb8834 100%);
-      background-repeat: no-repeat;
-      background-position: 310px 0;
-      //animation: blabla 500ms;
-      transition: background-position 400ms;
+      background-size: 200% 100%;
+      background-image: linear-gradient(to right, #fff 50%, #fb8834 50%);
+      transition: background-position 450ms;
     }
     .link-room:hover {
-      background-position: -310px 0;
-      //animation-play-state: running;
-      //background: #fb8834;
+      background-position: 100% 0;
     }
     a {
       font-size: 24px;
       color: #000;
-      transition: color 350ms 50ms;
+      transition: color 400ms 50ms;
     }
 
     a:hover {
