@@ -55,6 +55,7 @@
 }
 
 #header2 {
+  z-index: -10000;
   height: 510px;
   background-color: rgba(250, 105, 0, 0.75);
 }
@@ -120,4 +121,16 @@
   border-right: 1px #c9722a solid;
   padding-left: 30px;
   padding-top: 40px;
+}
+
+#avatar {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  border: 3px #954829 solid;
+  img {
+    border-radius: 50%;
+  }
 }
