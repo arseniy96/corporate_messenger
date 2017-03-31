@@ -25,7 +25,7 @@
             </div>
           </div>
           <div id="avatar">
-            <%= link_to image_tag(@user.avatar.url, height: '100%', width: '100%'), user_path(current_user) %>
+            <%= link_to image_tag(current_user.avatar.url, height: '100%', width: '100%'), user_path(current_user) %>
           </div>
           <div class="row menu" id="header2">
             <% current_user.rooms.each do |room| %>
