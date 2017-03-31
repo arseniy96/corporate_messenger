@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :set_user, only: [:index, :show]
+  before_action :set_user, only: [:index, :show, :new, :edit]
   before_action :set_room, only: [:show, :edit, :update, :destroy, :invite_friends]
 
   def index
