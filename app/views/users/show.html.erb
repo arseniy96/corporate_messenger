@@ -1,24 +1,38 @@
-<div class="col-md-6">
+<div class="col-md-9">
   <div class="row">
     <div class="top-header"><%= @user.username %></div>
     <div class="content">
-      <% if current_user.id == @user.id %>
-        <div class="col-md-6">
-          <p><%= image_tag @user.avatar.url(:medium) %></p>
-          <h3>Invitations to friends:</h3>
-          <% @potential_friends.each do |friend| %>
-            <%= link_to friend.email, user_path(friend) unless @user.users.include?(friend)%>
-          <% end %>
-          <h3>Your friends:</h3>
-          <% @friends.each do |friend| %>
-            <p><%= link_to friend.email, user_path(friend) %></p><hr/>
-          <% end %>
+      <div class="row">
+        <div class="col-md-4">
+          <p><%= image_tag @user.avatar.url, height: 250, width: 210 %></p>
         </div>
-        <div class="col-md-6">
-          <h3>Your rooms:</h3>
-          <% @user.rooms.each do |room| %>
-            <p><%= link_to room.title, room_path(room) %></p>
-          <% end %>
+        <div class="col-md-8">
+          <h3>О себе:</h3>
+          <div id="about_user">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa orci, vestibulum id pretium sed, pulvinar molestie nulla. Aenean in euismod nulla, elementum iaculis quam. Vestibulum ac urna eget ipsum venenatis viverra. Integer ac suscipit enim. In convallis laoreet neque, ut lobortis massa fermentum non. Mauris dictum justo quis felis pretium aliquet. Cras imperdiet vel lectus id tempor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras pretium viverra ex sodales congue. Suspendisse lectus turpis, sodales at arcu ac, porta malesuada eros. Vivamus tellus arcu, ornare eu nibh a, laoreet condimentum lorem. Nullam posuere tristique dui et rutrum. Cras placerat maximus nunc quis imperdiet.
+            </p>
+          </div>
+        </div>
+      </div>
+      <% if current_user.id == @user.id %>
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Your friends:</h3>
+            <% @friends.each do |friend| %>
+                <p><%= link_to friend.email, user_path(friend) %></p><hr/>
+            <% end %><br/>
+            <h3>Your rooms:</h3>
+            <% @user.rooms.each do |room| %>
+                <p><%= link_to room.title, room_path(room) %></p>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <h3>Invitations to friends:</h3>
+            <% @potential_friends.each do |friend| %>
+                <%= link_to friend.email, user_path(friend) unless @user.users.include?(friend)%>
+            <% end %>
+          </div>
         </div>
       <% elsif !(current_user.users.include?(@user)) %>
         <p><%= link_to 'Add friend', add_friend_user_path(@user) %></p>
