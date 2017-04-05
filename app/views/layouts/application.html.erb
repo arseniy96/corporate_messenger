@@ -9,8 +9,8 @@
 
 </head>
 <body>
-  <div class="row">
-    <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="row">
       <div class="col-md-3">
         <div class="col-md-3" style="position: fixed;">
           <div class="row menu" id="header1">
@@ -38,13 +38,19 @@
           </div>
         </div>
       </div>
-    <% end %>
+
+      <%= yield %>
+
+    </div>
+  <% else %>
+    <div id="home"></div>
 
     <%= yield %>
 
-    <script type="text/javascript">
-      $(document).ready(function(){avatar()});
-    </script>
-  </div>
+  <% end %>
+
+  <script type="text/javascript">
+    $(document).ready(function(){avatar()});
+  </script>
 </body>
 </html>

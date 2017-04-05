@@ -12,8 +12,9 @@
  */
 
 @import "bootstrap";
-@import "rooms";
 @import "chats";
+@import "home";
+@import "rooms";
 @import "tasks";
 @import "users";
 
@@ -135,4 +136,13 @@
   img {
     border-radius: 50%;
   }
+}
+
+#home {
+  min-height: 100vh;
+  min-width: 100%;
+  background-size: 100% 100%;
+  background-image: image-url('background-index.jpg');
+  position: fixed;
+  z-index: -1000;
 }
