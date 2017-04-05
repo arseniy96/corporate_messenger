@@ -11,12 +11,14 @@
  * It is generally better to create a new file per style scope.
  */
 
+@import "../fonts/fonts";
 @import "bootstrap";
 @import "chats";
 @import "home";
 @import "rooms";
 @import "tasks";
 @import "users";
+
 
 @keyframes blabla {
   80% {
@@ -26,6 +28,10 @@
     background-position: -320px 0;
     background-color: #fb8834;
   }
+}
+
+body {
+  font-family: Roboto;
 }
 
 .row {
