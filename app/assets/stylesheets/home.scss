@@ -1,3 +1,29 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home-no-user {
+  text-align: center;
+  .home-text {
+    margin-top: 10%;
+    text-transform: uppercase;
+  }
+  .home-buttons {
+    margin-top: 5%;
+    border-radius: 5px;
+    font-size: 24px;
+    color: #fb8834;
+    display: inline-block;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding: 15px 20px;
+    background-color: rgba(40, 40, 40, 0.9);
+    min-width: 23%;
+  }
+
+  .home-buttons:hover {
+    background-color: rgba(50, 50, 50, 0.95);
+    color: #fb9844;
+    text-decoration: none;
+  }
+}
