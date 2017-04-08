@@ -1,40 +1,42 @@
 <div class="container">
-  <h2>Sign up</h2>
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="entry">
+      <h2>Sign up</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: "form-control form-field" %><br />
+          </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, class: "form-control", style: "width: 30%;" %>
+          <div>
+            <%= f.text_field :username, placeholder: 'Username', class: "form-control form-field" %><br />
+          </div>
+
+          <div class="field">
+            <% if @minimum_password_length %>
+                <%= f.password_field :password, autocomplete: "off", placeholder: "Password (#@minimum_password_length characters minimum)",
+                                     class: "form-control form-field" %>
+            <% end %><br />
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password',
+                                 class: "form-control form-field" %><br/>
+          </div>
+
+          <div>
+            <%= f.file_field :avatar, class: "form-field" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up", class: "btn btn-warning" %>
+          </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
     </div>
-
-    <div>
-      <%= f.label :username %><br/>
-      <%= f.text_field :username, class: "form-control", style: "width: 30%;" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", class: "form-control", style: "width: 30%;" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", style: "width: 30%;" %><br/>
-    </div>
-
-    <div>
-      <%= f.file_field :avatar %><br/>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up", class: "btn btn-info" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+  </div>
+  <div class="col-md-3"></div>
 </div>
